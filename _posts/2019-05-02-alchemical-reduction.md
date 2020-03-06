@@ -12,3 +12,18 @@ tags:
 You'll need to get your own input for this challenge from [this Advent of Code problem]({{ page.link }}).
 
 ## Solution
+
+```python
+is_pair = lambda x,y: x != y and x.lower() == y.lower()
+
+def alchemical_reaction(string):
+    return scan(list(string),0)
+    
+def scan(polys,i):
+    if is_pair(polys[i],polys[i+1]):
+        del polys[i:i+2]
+        scan(polys,max(0,i-1))
+    if (i < (len(polys ) - 2)):
+        scan(polys,i+1)
+    return len(polys)
+```
